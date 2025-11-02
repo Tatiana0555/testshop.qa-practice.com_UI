@@ -6,11 +6,7 @@ jobs:
   run-tests:
     runs-on: ubuntu-latest
     name: Run autotests
-    steps:
-      - name: Debug current directory
-        run: |
-          pwd
-          ls -R
+    steps:     
       - name: Checkout autotests
         uses: actions/checkout@v5
         
@@ -21,9 +17,6 @@ jobs:
           
       - name: Install dependencies.
         run: pip install -r requirements.txt
-
-      - name: Add project to PYTHONPATH
-        run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)" >> $GITHUB_ENV
-        
+              
       - name: run tests
         run: pytest
